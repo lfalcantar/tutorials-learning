@@ -3,7 +3,6 @@ import java.util.*;
 public class NQueens_Problem {
 
 	public static ArrayList<char[][]> solutions = new ArrayList<char[][]>();
-	public static Scanner sc = new Scanner(System.in);
 
 	public static boolean solveNQueen(Board board, int row) {
 
