@@ -3,13 +3,17 @@ public class Board {
 	private int numberQueens;
 	public int size;
 
+	/**
+	 Customize constructor that will take size:int as the board length, 
+	 it will also initialize variables and place asterics in the boar '*' */	
 	public Board(int size) {
 		this.size = size;
 		this.board = new char[size][size];
 		this.numberQueens = 0;
 		initBoard();
 	}
-
+	
+	
 	public char[][] getBoard() {
 		return this.board;
 	}
@@ -78,6 +82,7 @@ public class Board {
 		this.numberQueens++;
 	}
 	
+	/*make sure the indices in the loops are between the board boundaries*/
 	public boolean checkIndices(int i, int j){
 		return i < size && j < size && j >= 0 && i >= 0?true:false;
 	}
