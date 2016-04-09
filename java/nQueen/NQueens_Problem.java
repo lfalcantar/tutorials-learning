@@ -1,8 +1,10 @@
 import java.util.*;
 
 public class NQueens_Problem {
+
 	/*This variable store all the solutions found in the board*/
 	public static ArrayList<Board> solutions = new ArrayList<Board>();
+
 	/**
 	 This method will take a board:Board and will solve the problem
 	 based on that board fields, and a starting point row:int*/
