@@ -1,15 +1,14 @@
 import java.util.*;
 
 public class NQueens_Problem {
-
-	public static ArrayList<char[][]> solutions = new ArrayList<char[][]>();
-	public static Scanner sc = new Scanner(System.in);
+	/*This variable store all the solutions found in the board*/
+	public static ArrayList<Board> solutions = new ArrayList<Board>();
 
 	public static boolean solveNQueen(Board board, int row) {
 
 		if (board.getNumberQueens() == board.size) {
-			solutions.add(board.getBoard());
-			System.out.println("**Solution**");
+			solutions.add(board);
+			System.out.println("***Solution***");
 			board.printBoard();
 			return true;
 		}
@@ -24,7 +23,6 @@ public class NQueens_Problem {
 				board.addChar(row, i, 'Q');
 				
 				if (solveNQueen(board, row + 1)) {
-
 					continue;
 				}
 
