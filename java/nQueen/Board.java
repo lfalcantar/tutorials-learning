@@ -3,7 +3,7 @@ public class Board {
 	private int numberQueens;
 	public int size;
 
-	/**
+	/** 
 	 Customize constructor that will take size:int as the board length, 
 	 it will also initialize variables and place asterics in the boar '*' */	
 	public Board(int size) {
