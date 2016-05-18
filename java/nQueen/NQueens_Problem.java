@@ -4,6 +4,7 @@ public class NQueens_Problem {
 
 	/*This variable store all the solutions found in the board*/
 	public static ArrayList<Board> solutions = new ArrayList<Board>();
+	public static int counter =0;
 
 	/**
 	 This method will take a board:Board and will solve the problem
@@ -13,7 +14,7 @@ public class NQueens_Problem {
 		 * there is a solution*/
 		if (board.getNumberQueens() == board.size) {
 			solutions.add(board);
-			System.out.println("***Solution***");
+			System.out.println("***Solution*** NUMBER " +  (counter++));
 			board.printBoard();
 			return true;
 		}
