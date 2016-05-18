@@ -19,7 +19,7 @@ public class maximumSubarray {
 				list.add(sc.nextInt());
 			}
 			System.out.println(nonContinuousSum(list, list.size(), 0, 0) + " " + continousSum(list));
-			sc.nextLine();
+            if(sc.hasNextLine()){sc.nextLine();}
 		}
 	}
 
