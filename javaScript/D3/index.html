@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>D3-neo4jVizualization</title>
+	<meta charset="utf-8">
+	<meta name="author" content="Team-M-A-J-R-L">
+	<meta name="description" content="Vizualization of D3"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+
+	<script type="text/javascript" src="d3.v3.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="neo4j-access.js"></script>
+	<script type="text/javascript" src="graphCode.js"></script>
+
+	<script>
+
+
+	$(function() {
+    $('#vizualization').click(function(){
+			document.getElementById('hiddeNode').style.display = 'none';
+			document.getElementById('hiddeEdge').style.display = 'none';
+      $('.submenuVizualization').slideToggle();
+
+    });
+		$('#addNode').click(function(){
+			document.getElementById('hiddeVizualization').style.display = 'none';
+			document.getElementById('hiddeEdge').style.display = 'none';
+      $('.submenuAddNode').slideToggle();
+    });
+		$('#addEdge').click(function(){
+			document.getElementById('hiddeVizualization').style.display = 'none';
+			document.getElementById('hiddeNode').style.display = 'none';
+      $('.submenuAddEdge').slideToggle();
+    });
+});
+
+</script>
+
+	<style type="text/css">
+	 .select-editable {
+	     position:relative;
+	     background-color:white;
+	     border:solid grey 1px;
+	     width:120px;
+	     height:18px;
+	 }
+	 .select-editable select {
+	     position:absolute;
+	     top:0px;
+	     left:0px;
+	     font-size:14px;
+	     border:none;
+	     width:120px;
+	     margin:0;
+	 }
+	 .select-editable input {
+	     position:absolute;
+	     top:0px;
+	     left:0px;
+	     width:100px;
+	     padding:1px;
+	     font-size:12px;
+	     border:none;
+	 }
+	 .select-editable select:focus, .select-editable input:focus {
+	     outline:none;
+	 }
+	</style>
+
+</head>
+
+<header>
+	<div class="logo">
+		<a href="index.html"><img src="img/logo.png" title="D3" alt="D3Vizualization"/></a>
+	</div><!-- end logo -->
+
+	<div id="menu_icon"></div>
+	<nav>
+		<ul id="Menu">
+
+			<li class="button" id="vizualization">Vizualization</li>
+			<li id="hiddeVizualization" style="margin-left:10"; class="submenuVizualization">
+				<form style="padding: 3px;margin-left: 25px;">
+					<p></p>
+					<label>Cypher:</label> <br> <input id="query" type="text"/> <br>
+					<input type="button" value="Submit" onclick="submitQuery()"> <br>
+					<p></p>
+					<label>Predefined:</label> <br>
+					<select id="predefinedQuery">
+						<option value="0">All Researchers</option>
+						<option value="1">UTEP Researchers</option>
+						<option value="2">All Experts</option>
+						<option value="3">All Contributors</option>
+					</select>
+					<input type="button" value="Submit" onclick="submitPredefinedQuery()">
+					<p></p>
+					All Experts in
+					<div class="select-editable">
+						<select onchange="this.nextElementSibling.value=this.value">
+					        <option value=""></option>
+					        <option value="Human-Computer_Interaction">Human-Computer_Interaction</option>
+					        <option value="Building_Interdisciplinary_Collaborations">Building_Interdisciplinary_Collaborations</option>
+					        <option value="User_Service">User_Service</option>
+					        <option value="Outreach">Outreach</option>
+					        <option value="Decision_Making">Decision_Making</option>
+					        <option value="Cloud_Computing">Cloud_Computing</option>
+					        <option value="Project_Management">Project_Management</option>
+					        <option value="Secure_System">Secure_System</option>
+					        <option value="Simulation">Simulation</option>
+					    </select>
+					    <input type="text" id="expertField" value="" />
+					</div>
+					<input type="button" value="Submit" onclick="submitExpertInPredefinedQuery()">
+				</form>
+			</li>
+
+			<li class="button" id="addNode">Add Node</li>
+			<li id="hiddeNode" class="submenuAddNode">
+				<form style="padding: 3px;margin-left: 25px;">
+					<label>Name: </label> <br> <input type="text" id="nodeName" > <br>
+					<p></p>
+					<label>Label: </label> <br>
+					<select id="nodeLabel">
+						<option value="Field">Field</option>
+						<option value="Institution">Institution</option>
+						<option value="Researcher">Researcher</option>
+						<option value="Resource">Resource</option>
+					</select>
+					<br>
+					<input type="button" value="Add" onclick="addNode()" >
+				</form>
+			</li>
+
+			<li class="button" id="addEdge">Add Edge</li>
+			<li id="hiddeEdge" class="submenuAddEdge">
+				<form style="padding: 3px;margin-left: 25px;">
+					<label>Name: </label>
+					<br>
+					<div class="select-editable">
+						<select onchange="this.nextElementSibling.value=this.value">
+					        <option value=""></option>
+					        <option value="canContributeTo">canContributeTo</option>
+					        <option value="hasApplication">hasApplication</option>
+					        <option value="hasDimension">hasDimension</option>
+					        <option value="hasPart">hasPart</option>
+					        <option value="isA">isA</option>
+					        <option value="isAnImplementationOf">isAnImplementationOf</option>
+					        <option value="isExpertIn">isExpertIn</option>
+					        <option value="isFromInstitution">isFromInstitution</option>
+					        <option value="usesExpertiseFrom">usesExpertiseFrom</option>
+					    </select>
+					    <input type="text" id="edgeName" value="" />
+				    </div>
+					<label>Source: </label> <br>
+					<select id="edgeSource">
+					</select>
+					<br>
+					<label>Target: </label> <br>
+					<select id="edgeTarget" >
+					</select>
+					<br>
+					<input type="button" value="Add" onclick="addEdge()">
+				</form>
+			</li>
+
+		</ul>
+  	</nav><!-- end navigation menu -->
+
+
+		<div class="rights">
+			<p>Advance database<br>Natalia Villanueva</p>
+		</div><!-- end rights -->
+</header><!-- end header -->
+
+<body  >
+	<svg id="svgContainer" width="100%" height="100%" >
+</body>
+
+</html>
