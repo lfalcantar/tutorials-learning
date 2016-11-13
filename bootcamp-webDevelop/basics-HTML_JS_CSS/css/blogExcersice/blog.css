@@ -1,0 +1,32 @@
+body{
+	font-size: 16px;
+}
+#mainBlock{
+	width: 60%;
+	background: white;
+	margin:  20px auto;
+	border: 20px solid #bdc3c7;
+}
+.post{
+	padding-left: 3%;
+	padding-right: 3%;
+}
+
+.date{
+	color: #0EB7EE;
+	text-transform: uppercase;
+}
+
+h2{
+	color: #2c3e50;
+}
+
+.intro{
+	border-left: 5px solid #bdc3c7;
+	padding-left: 1%;
+}
+
+hr{
+	width: 94%;
+	color: #F6F3F3;
+}

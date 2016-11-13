@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Specificity</title>
+	<link rel="stylesheet" type="text/css" href="Specificity.css">
+</head>
+<body>
+	<ul>
+		<li>John</li>
+		<li>Paul</li>
+		<li>Geoge</li>
+		<li>Ringo</li>
+	</ul>
+
+	<p>The level of specificity is evaluated by numbers<br>Base on the number
+		it overrides the style</p>
+
+	<ul>
+		<li style="margin-left: 10px">
+			Element selector is : <strong>1</strong>
+		</li>
+			<li style="margin-left: 30px">
+				Class selector  is : <strong>10</strong>
+			</li>
+				<li style="margin-left: 50px">
+					Id selector is : <strong>100</strong>
+				</li>
+					<li style="margin-left: 70px">
+						In line selector is : <strong>1000</strong>
+					</li>
+	</ul>
+</body>
+</html>

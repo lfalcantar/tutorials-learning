@@ -1,0 +1,34 @@
+/* Pading space between the box and the element
+margin space between box and anything else outise the box
+ */
+
+/* % porcentage is base on the inheriutance in this case P will be the % of the body */
+
+body{
+	/* default size */
+	font-size: 16px;
+}
+p{
+	/* content- width and heigh`t  */
+	width: 50%;
+
+	/* border */
+	border: 2px solid blue;
+
+	/* padding */
+	/* padding: 10px; */
+	padding-left: 10px;
+
+	/* margin */
+	/* margin-top: 100px; */
+
+	     /* Top-Right- bottom- left*/
+	/* margin: 20px 40px 500px 100px; */
+
+	/* auto margin */
+	/* margin:  1em auto 1em auto; */
+
+	/* shortcut for auto
+			(TOP-BOTTOM) (LEFT-RIGHT) */
+	margin:  0 auto;
+}

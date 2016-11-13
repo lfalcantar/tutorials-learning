@@ -1,0 +1,22 @@
+h1{
+	color: yellow;
+	
+	/* border-color: purple;
+	border-width: 5px;
+	border-style: dashed;
+ */
+	/* we can also use on line  */
+	border: 5px solid purple;
+}	
+
+li{
+	color: gray;
+}
+
+body{
+/* 	background: url('http:\/\/cdn-media-1.lifehack.org\/wp-content\/files\/2012\/12\/Nature_2-1024x768.jpg');
+	background-repeat: no-repeat;
+	background-size: cover; */
+	background: pink;
+}
+
