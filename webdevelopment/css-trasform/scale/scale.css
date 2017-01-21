@@ -1,0 +1,30 @@
+div{
+	width: 150px;
+	height: 150px;
+}
+div h1{
+	padding: 50px 0 0 30px;
+}
+.center{margin: 0 auto;}
+.centerText{text-align: center;}
+.box{margin-top: 150px;}
+.box-top{border: 1px red dashed;}
+
+.box-bottom{border: 1px black dashed;}
+
+#scale{
+	-webkit-transform: scale(2,2.5);
+	   -moz-transform: scale(2,2.5);
+	    -ms-transform: scale(2,2.5);
+	     -o-transform: scale(2,2.5);
+	        transform: scale(2,2.5);
+}
+
+.originalSize{
+	color: black;
+}
+
+.newSize{
+	color: red;
+}
+
