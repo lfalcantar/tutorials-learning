@@ -2,47 +2,27 @@
 >By Luis Alcantar
 
 ###Methods
---public boolean single.linklist.LinkList.add(int,java.lang.Object)
 
---public void single.linklist.LinkList.add(java.lang.Object)
+-public boolean add(T)
 
---public java.lang.String single.linklist.LinkList.toString()
+-public boolean addFirst(T)
 
---public java.lang.Object single.linklist.LinkList.clone() throws java.lang.CloneNotSupportedException
+-public boolean addLast(T)
 
---public single.linklist.LinkList single.linklist.LinkList.clone()
+-public void clear()
 
---public int single.linklist.LinkList.indexOf(java.lang.Object)
+-public LinkList<T> clone()
 
---public void single.linklist.LinkList.clear()
+-public Node<T> getFirstElement()
 
---public boolean single.linklist.LinkList.isEmpty()
+-public int indexOf(T)
 
---public int single.linklist.LinkList.size()
+-public boolean isEmpty()
 
---public boolean single.linklist.LinkList.addFirst(java.lang.Object)
+-public T peekFirst()
 
---public boolean single.linklist.LinkList.addLast(java.lang.Object)
+-public T peekLast()
 
---public java.lang.Object single.linklist.LinkList.peekFirst()
+-public int size()
 
---public java.lang.Object single.linklist.LinkList.peekLast()
-
---public single.linklist.Node single.linklist.LinkList.getFirstElement()
-
---public final void java.lang.Object.wait(long,int) throws java.lang.InterruptedException
-
---public final native void java.lang.Object.wait(long) throws java.lang.InterruptedException
-
---public final void java.lang.Object.wait() throws java.lang.InterruptedException
-
---public boolean java.lang.Object.equals(java.lang.Object)
-
---public native int java.lang.Object.hashCode()
-
---public final native java.lang.Class java.lang.Object.getClass()
-
---public final native void java.lang.Object.notify()
-
---public final native void java.lang.Object.notifyAll()
-
+-public String toString()
