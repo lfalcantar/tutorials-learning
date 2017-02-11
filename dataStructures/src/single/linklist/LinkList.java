@@ -30,38 +30,37 @@ public class LinkList<T> {
     }
 
     /**
-     Inserts the specified element at the specified position in this list.
-     * @param :index  the desire position starting from 0 or 1 then 2,3,4,5
-     * @param  :data   the content of the new node
+     * Inserts the specified element at the specified position in this list.
+     *
+     * @param :index the desire position starting from 0 or 1 then 2,3,4,5
+     * @param :data  the content of the new node
      * @return Boolean: if the insertion was successfully true otherwise false
      */
     public boolean add(int index, T data) {
         /*Add to the end of the list*/
-        if(index == size()){
+        if (index == size()) {
             add(data);
             return true;
         }
         /*Empty list and index bigger than 0*/
-        else if (this.head == null && index != 0){
+        else if (this.head == null && index != 0) {
             return false;
-        }
-        else{
-            Node<T> tempNode  = this.head;
+        } else {
+            Node<T> tempNode = this.head;
 
-            while(tempNode != null && tempNode.next != null && --index != 0){
+            while (tempNode != null && tempNode.next != null && --index != 0) {
                 tempNode = tempNode.next;
             }
 
-            if(index != 0) {
+            if (index != 0) {
                 return false;
-            }else{
+            } else {
                 Node<T> newNode = new Node<T>(data);
 
                 /*Empty list,and index is 0*/
-                if(tempNode == null){
-                    this.head =  newNode;
-                }
-                else{
+                if (tempNode == null) {
+                    this.head = newNode;
+                } else {
                     newNode.next = tempNode.next;
                     tempNode.next = newNode;
                 }
@@ -72,43 +71,46 @@ public class LinkList<T> {
 
     /**
      * This method will add T data to the front of the linklist
+     *
      * @param data
      * @return
      */
-    public boolean addFirst(T data){
+    public boolean addFirst(T data) {
         return add(0, data);
     }
 
     /**
      * This method will add data to the end of the list
+     *
      * @param data
      * @return true if successfull, false otherwise
      */
-    public boolean addLast(T data){
+    public boolean addLast(T data) {
         return add(size(), data);
     }
 
     /**
      * Removes all of the elements from this list.
      */
-    public void clear(){
+    public void clear() {
         this.head = null;
     }
 
     /**
      * Returns the index of the first occurrence of the specified element in this list,
      * or -1 if this list does not contain the element.
+     *
      * @param data
      * @return
      */
-    public int indexOf(T data){
+    public int indexOf(T data) {
         Node<T> temp = this.head;
         int index = 0;
-        while(temp != null){
-            if(temp.getData().equals(data)) {
+        while (temp != null) {
+            if (temp.getData().equals(data)) {
                 return index;
             }
-            index ++;
+            index++;
             temp = temp.next;
         }
         return -1;
@@ -116,6 +118,7 @@ public class LinkList<T> {
 
     /**
      * Check if the list if empty
+     *
      * @return true if the list contains 1 or more elements, false otherwise
      */
     public boolean isEmpty() {
@@ -124,6 +127,7 @@ public class LinkList<T> {
 
     /**
      * Returns the number of elements in this list.
+     *
      * @param : element points to the head
      * @see : sizeHelper , size
      */
@@ -138,12 +142,20 @@ public class LinkList<T> {
         return count;
     }
 
+    /**
+     * Return and remove from the list the first element of the list
+     *
+     * @return
+     */
     public Node<T> getFirstElement() {
-        return this.head != null ? this.head : null;
+        Node<T> oldHead = this.head;
+        this.head = this.head.next;
+        return oldHead;
     }
 
     /**
-     Retrieves, but does not remove, the first element of this list, or returns null if this list is empty.
+     * Retrieves, but does not remove, the first element of this list, or returns null if this list is empty.
+     *
      * @return the value of the first element in the list
      */
     public T peekFirst() {
@@ -151,13 +163,16 @@ public class LinkList<T> {
     }
 
     /**
-     Retrieves, but does not remove, the last element of this list, or returns null if this list is empty.
+     * Retrieves, but does not remove, the last element of this list, or returns null if this list is empty.
+     *
      * @return
      */
     public T peekLast() {
         Node<T> temp = this.head;
-        if(temp == null){return null;}
-        while(temp.next != null){
+        if (temp == null) {
+            return null;
+        }
+        while (temp.next != null) {
             temp = temp.next;
         }
         return temp.getData();
@@ -183,13 +198,14 @@ public class LinkList<T> {
 
     /**
      * Returns a shallow copy of this LinkedList.
+     *
      * @return The new clone list.
      */
-    public LinkList<T> clone(){
+    public LinkList<T> clone() {
         LinkList<T> cloneList = new LinkList<T>();
         Node<T> temp = this.head;
 
-        while(temp != null){
+        while (temp != null) {
             cloneList.add(temp.getData());
             temp = temp.next;
         }
