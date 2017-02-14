@@ -1,17 +1,13 @@
 /**
  * Created by Luis Alcantar on 2/8/17.
  */
-package single.linklist;
+package doublelinklist;
 
-import java.util.List;
-
-public class LinkList<T>{
+public class DoubleLinkList<T>{
     public Node<T> head;
-    public int count;
 
-    public LinkList() {
+    public DoubleLinkList() {
         this.head = null;
-        this.count = 0;
     }
 
     /**
@@ -21,7 +17,7 @@ public class LinkList<T>{
      * @param data : data to be added to the list
      */
     public void add(T data) {
-        if (isEmpty()) {
+        if (this.head == null) {
             this.head = new Node<T>(data);
         } else {
             Node temp = this.head;
@@ -31,7 +27,6 @@ public class LinkList<T>{
 
             temp.next = new Node<T>(data);
         }
-        this.count++;
     }
 
     /**
@@ -71,7 +66,6 @@ public class LinkList<T>{
                 }
             }
         }
-        this.count++;
         return true;
     }
 
@@ -101,40 +95,6 @@ public class LinkList<T>{
     public void clear() {
         this.head = null;
     }
-
-    /**
-     * Delete a node from the list if param Data match a value inside the list.
-     * because of the nature of the list, the first element that match the data
-     * will be delete.
-     * @param data : element that need to be delete,
-     * @return
-     */
-    public boolean delete(T data) {
-        /*Add to the end of the list*/
-        if (isEmpty()) {
-          return false;
-        }
-        /*first element*/
-        if(this.head.getData().equals(data)){
-            this.head = this.head.next;
-            return true;
-        }
-
-        Node<T> temp = this.head;
-        Node<T> previous = null;
-        while(temp != null){
-            if(temp.getData().equals(data)){
-                previous.next = temp.next;
-                temp.next = null;
-                this.count--;
-                return true;
-            }
-            previous = temp;
-            temp = temp.next;
-        }
-        return false;
-    }
-
 
     /**
      * Returns the index of the first occurrence of the specified element in this list,
@@ -171,7 +131,7 @@ public class LinkList<T>{
      * @param : element points to the head
      * @see : sizeHelper , size
      */
-    public int sizeMethod() {
+    public int size() {
         Node<T> temp = this.head;
         int count = 0;
 
@@ -180,16 +140,6 @@ public class LinkList<T>{
             count += 1;
         }
         return count;
-    }
-    /**
-     * Returns the number of elements in this list
-     * usings a variable.
-     *
-     * @param : element points to the head
-     * @see : sizeHelper , size
-     */
-    public int size() {
-        return this.count;
     }
 
     /**
@@ -251,8 +201,8 @@ public class LinkList<T>{
      *
      * @return The new clone list.
      */
-    public LinkList<T> clone() {
-        LinkList<T> cloneList = new LinkList<T>();
+    public DoubleLinkList<T> clone() {
+        DoubleLinkList<T> cloneList = new DoubleLinkList<T>();
         Node<T> temp = this.head;
 
         while (temp != null) {
