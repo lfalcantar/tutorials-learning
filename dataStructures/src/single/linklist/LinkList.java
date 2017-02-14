@@ -229,7 +229,31 @@ public class LinkList<T>{
     }
 
     /**
-     * This toString requires the Generic Type <T> to have a toString method.
+     * Get the last element of the list, and the last element will know be the
+     * @return
+     */
+    public Node<T> getLast() {
+        Node<T> last = this.head;
+        Node<T> prev = null;
+        if(isEmpty()){ return prev; }
+
+        while (last.next != null) {
+            prev = last;
+            last = last.next;
+        }
+        /*There is only on element the head,remove the link of head*/
+        if(prev == null){
+            this.head = null;
+        }else{/*Set prev.next of the last element(TEMP) to null*/
+            prev.next = null;
+        }
+
+        this.count--;
+        return last;
+    }
+
+    /**
+     * This toString requires the Generic Type T to have a toString method.
      */
     public String toString() {
         if (isEmpty()) {
@@ -261,4 +285,5 @@ public class LinkList<T>{
         }
         return cloneList;
     }
+
 }
