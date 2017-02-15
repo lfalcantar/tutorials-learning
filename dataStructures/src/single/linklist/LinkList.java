@@ -254,6 +254,7 @@ public class LinkList<T>{
 
     /**
      * This toString requires the Generic Type T to have a toString method.
+     * @return  String representing the list
      */
     public String toString() {
         if (isEmpty()) {
