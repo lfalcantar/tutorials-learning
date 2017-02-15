@@ -39,12 +39,24 @@ and two.pointer.linklist
 
 
 ##Memory and speed tests
-###class single.linklist.LinkList Test
-	###Test 1 : Adding 100000 to lists
-		OLD-SIZE :0, NEW_SIZE:100000
-		Result for adding 100000, in Seconds: 11.943
-		Used memory in bytes: 4485160
-		Used memory in megabytes: 4
-	###Test 2 : the removal of  100000 from lists
-		OLD-SIZE :100000, NEW_SIZE:60594
-		Result for Removing 100000, in Seconds: 5.668
+###single.linklist.LinkList Test
+Test 1 : Adding 100000 to lists
+	OLD-SIZE :0, NEW_SIZE:100000
+	Result for adding 100000, in Seconds: 11.023
+	Used memory in bytes: 4485704  | 4486040
+	Used memory in megabytes: 4
+Test 2 : the removal of  100000 from lists
+	OLD-SIZE :100000, NEW_SIZE:60616
+	Result for Removing 100000, in Seconds: 5.553
+	Used memory in bytes: 2893200
+	Used memory in megabytes: 2
+Test 3 Justification to use count variable to get size instead of a method to visit all elements
+	Size Method
+	Method size took, in Milliseconds: 0
+	Size Variable
+	Variable size took, in Milliseconds: 0
+Test 4 : removing all elements using getLast()
+	OLD-SIZE :60616, NEW_SIZE:0
+	Result removing all element using getLast(), in Seconds: 3.724
+	Used memory in bytes: 468720
+	Used memory in megabytes: 0

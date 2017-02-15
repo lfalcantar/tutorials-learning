@@ -3,8 +3,6 @@
  */
 package single.linklist;
 
-import java.util.List;
-
 public class LinkList<T>{
     public Node<T> head;
     public int count;

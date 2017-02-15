@@ -1,12 +1,9 @@
-package two.pointers.linklist;
-
-import single.linklist.LinkList;
+package single.linklist;
 
 /**
- * Created by NOOB on 2/12/17.
+ * Created by Luis Alcantar on 2/12/17.
  */
-public class TestTwoPointersLinkList {
-
+public class TestLinkListSingle {
 
     private static final long MEGABYTE = 1024L * 1024L;
     private static final int CONTROL_VARIABLE = 100000;
@@ -25,36 +22,48 @@ public class TestTwoPointersLinkList {
 
 
         System.out.println("Test " + testNumber++ + " : Adding " + CONTROL_VARIABLE + " to lists");
-            System.out.print("\tOLD-SIZE :" + list.size());
-            startTime = System.currentTimeMillis();
+        System.out.print("\tOLD-SIZE :" + list.size());
+        startTime = System.currentTimeMillis();
             addingToListTest(list);
             endTime = System.currentTimeMillis() - startTime;
-            System.out.println(", NEW_SIZE:" + list.size());
+        System.out.println(", NEW_SIZE:" + list.size());
         System.out.println("\tResult for adding "+ CONTROL_VARIABLE + ", in Seconds: "+ endTime/TO_SECONDS);
 
         memoryUsage();
 
         System.out.println("Test " + testNumber++ + " : the removal of  "+ CONTROL_VARIABLE +" from lists");
-            System.out.print("\tOLD-SIZE :" + list.size());
+        System.out.print("\tOLD-SIZE :" + list.size());
             startTime = System.currentTimeMillis();
             deletingElementsTest(list);
             endTime = System.currentTimeMillis() - startTime;
-            System.out.println(", NEW_SIZE:" + list.size());
+        System.out.println(", NEW_SIZE:" + list.size());
         System.out.println("\tResult for Removing "+ CONTROL_VARIABLE + ", in Seconds: "+ endTime/TO_SECONDS);
 
         memoryUsage();
 
-        System.out.println("Test Justification to use count variable to get size instead of a method to visit all elements");
+        System.out.println("Test "+ testNumber++ +" Justification to use count variable to get size instead of a method to visit all elements");
             System.out.println("\tSize Method");
             startTime = System.currentTimeMillis();
             list.sizeMethod();
             endTime = System.currentTimeMillis() - startTime;
-            System.out.println("\tMethod size took, in Milliseconds: " + endTime);
+         System.out.println("\tMethod size took, in Milliseconds: " + endTime);
             System.out.println("\tSize Variable");
             startTime = System.currentTimeMillis();
             list.size();
             endTime = System.currentTimeMillis() - startTime;
-        System.out.println("\tVariable size took, in Milliseconds: " + endTime);
+         System.out.println("\tVariable size took, in Milliseconds: " + endTime);
+
+
+        System.out.println("Test " + testNumber++ + " : removing all elements using getLast()");
+        System.out.print("\tOLD-SIZE :" + list.size());
+        startTime = System.currentTimeMillis();
+        getAllElements(list);
+        endTime = System.currentTimeMillis() - startTime;
+        System.out.println(", NEW_SIZE:" + list.size());
+        System.out.println("\tResult removing all element using getLast(), in Seconds: "+ endTime/TO_SECONDS);
+
+        memoryUsage();
+
 
     }
     public static void addingToListTest(LinkList<Integer> list){
@@ -73,6 +82,13 @@ public class TestTwoPointersLinkList {
 
         for (int i = 0; i < limit;i++){
             list.delete((int) (Math.random() * range) + MIN);
+        }
+    }
+
+    public static void  getAllElements( LinkList<Integer> list){
+        int limit = list.size();
+        for (int i = 0; i < limit;i++){
+            list.getLast();
         }
     }
 
