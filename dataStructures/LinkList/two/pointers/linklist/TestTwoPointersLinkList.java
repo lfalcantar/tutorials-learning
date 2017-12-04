@@ -1,7 +1,5 @@
 package two.pointers.linklist;
 
-import single.linklist.LinkList;
-
 /**
  * Created by Luis Alcantar on 2/12/17.
  */

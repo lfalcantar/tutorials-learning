@@ -7,30 +7,33 @@ You can see the other LinkList implementations and performance in the other pack
 and doublelinklist
 
 ##Methods
--public boolean add(T)
+-public boolean add(T)- BigO(1)
 
--public boolean addFirst(T)
+-public boolean addFirst(T)- BigO(1)
 
--public boolean addLast(T)
+-public boolean addLast(T)- BigO(1)
 
--public void clear()
+-public void clear()- BigO(1)
 
--public LinkList<T> clone()
+-public LinkList<T> clone()- BigO(N)
 
--public Node<T> getFirstElement()
+-public Node<T> getFirstElement()- BigO(1)
 
--public int indexOf(T)
+-public int indexOf(T)- BigO(N)
 
--public boolean isEmpty()
+-public boolean isEmpty()- BigO(1)
 
--public T peekFirst()
+-public T peekFirst()- BigO(1)
 
--public T peekLast()
+-public T getFirstElement()- BigO(1)
 
--public int size()
+-public T peekLast()- BigO(1)
 
--public String toString()
+-public T getLast()- BigO(1)
 
+-public int size()- BigO(1)
+
+-public String toString()- BigO(n)
 
 ##Memory and speed tests
 ###class two.pointers.linklist.TwoPointersLinkList Test

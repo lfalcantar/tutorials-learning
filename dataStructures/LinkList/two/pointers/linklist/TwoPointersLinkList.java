@@ -3,6 +3,8 @@
  */
 package two.pointers.linklist;
 
+import java.util.ArrayList;
+
 public class TwoPointersLinkList<T> {
     public Node<T> front;
     public Node<T> back;
@@ -62,7 +64,7 @@ public class TwoPointersLinkList<T> {
 
                 /*Empty list,and index is 0*/
                 if (tempNode == null) {
-                    this.front = newNode;
+                    add(data);
                 } else {
                     newNode.next = tempNode.next;
                     tempNode.next = newNode;
@@ -133,13 +135,21 @@ public class TwoPointersLinkList<T> {
         }
         return false;
     }
-    /**
-     * Returns the index of the first occurrence of the specified element in this list,
-     * or -1 if this list does not contain the element.
-     *
-     * @param data
-     * @return
-     */
+
+
+    public void bigON(String x){
+        int sum = 0;
+        for (int i = 0; i < x.length(); i++){
+
+        }
+    }
+        /**
+         * Returns the index of the first occurrence of the specified element in this list,
+         * or -1 if this list does not contain the element.
+         *
+         * @param data
+         * @return
+         */
     public int indexOf(T data) {
         Node<T> temp = this.front;
         int index = 0;

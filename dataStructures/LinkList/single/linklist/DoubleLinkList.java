@@ -3,11 +3,11 @@
  */
 package single.linklist;
 
-public class LinkList<T>{
+public class DoubleLinkList<T>{
     public Node<T> head;
     public int count;
 
-    public LinkList() {
+    public DoubleLinkList() {
         this.head = null;
         this.count = 0;
     }
@@ -274,8 +274,8 @@ public class LinkList<T>{
      *
      * @return The new clone list.
      */
-    public LinkList<T> clone() {
-        LinkList<T> cloneList = new LinkList<T>();
+    public DoubleLinkList<T> clone() {
+        DoubleLinkList<T> cloneList = new DoubleLinkList<T>();
         Node<T> temp = this.head;
 
         while (temp != null) {

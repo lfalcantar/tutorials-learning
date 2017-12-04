@@ -1,13 +1,18 @@
+package doublelinklist;
+
 /**
  * Created by Luis Alcantar on 2/8/17.
  */
-package doublelinklist;
 
-public class DoubleLinkList<T>{
-    public Node<T> head;
+public class DoubleLinkList<T> {
+    public Node<T> front;
+    public Node<T> back;
+    private int count;
 
     public DoubleLinkList() {
-        this.head = null;
+        this.front = null;
+        this.back = null;
+        this.count = 0;
     }
 
     /**
@@ -17,24 +22,24 @@ public class DoubleLinkList<T>{
      * @param data : data to be added to the list
      */
     public void add(T data) {
-        if (this.head == null) {
-            this.head = new Node<T>(data);
+        Node<T> newNode = new Node<T>(data);
+        if (this.front == null) {
+            this.front = newNode;
+            this.back = this.front;
         } else {
-            Node temp = this.head;
-            while (temp.next != null) {
-                temp = temp.next;
-            }
-
-            temp.next = new Node<T>(data);
+            this.back.next = newNode;
+            newNode.prev = this.back;
+            this.back = newNode;
         }
+        this.count++;
     }
 
     /**
      * Inserts the specified element at the specified position in this list.
      *
-     * @param :index the desire position starting from 0 or 1 then 2,3,4,5
+     * @param :index the desire position starting from 0 then 2,3,4,5
      * @param :data  the content of the new node
-     * @return Boolean: if the insertion was successfully true otherwise false
+     * @return Boolean: if the insertion was successfully return  true otherwise false
      */
     public boolean add(int index, T data) {
         /*Add to the end of the list*/
@@ -43,10 +48,10 @@ public class DoubleLinkList<T>{
             return true;
         }
         /*Empty list and index bigger than 0*/
-        else if (this.head == null && index != 0) {
+        else if (this.front == null && index != 0) {
             return false;
         } else {
-            Node<T> tempNode = this.head;
+            Node<T> tempNode = this.front;
 
             while (tempNode != null && tempNode.next != null && --index != 0) {
                 tempNode = tempNode.next;
@@ -59,13 +64,16 @@ public class DoubleLinkList<T>{
 
                 /*Empty list,and index is 0*/
                 if (tempNode == null) {
-                    this.head = newNode;
+                    add(data);
                 } else {
                     newNode.next = tempNode.next;
+                    newNode.prev = tempNode;
+                    tempNode.next.prev = newNode;
                     tempNode.next = newNode;
                 }
             }
         }
+        this.count++;
         return true;
     }
 
@@ -93,9 +101,42 @@ public class DoubleLinkList<T>{
      * Removes all of the elements from this list.
      */
     public void clear() {
-        this.head = null;
+        this.front = null;
     }
 
+
+    /**
+     * Delete a node from the list if param Data match a value inside the list.
+     * because of the nature of the list, the first element that match the data
+     * will be delete.
+     * @param data : element that need to be delete,
+     * @return
+     */
+    public boolean delete(T data) {
+        /*Add to the end of the list*/
+        if (isEmpty()) {
+            return false;
+        }
+        /*first element*/
+        if(this.front.getData().equals(data)){
+            this.front = this.front.next;
+            return true;
+        }
+
+        Node<T> temp = this.front;
+        Node<T> previous = null;
+        while(temp != null){
+            if(temp.getData().equals(data)){
+                previous.next = temp.next;
+                temp.next = null;
+                this.count--;
+                return true;
+            }
+            previous = temp;
+            temp = temp.next;
+        }
+        return false;
+    }
     /**
      * Returns the index of the first occurrence of the specified element in this list,
      * or -1 if this list does not contain the element.
@@ -104,7 +145,7 @@ public class DoubleLinkList<T>{
      * @return
      */
     public int indexOf(T data) {
-        Node<T> temp = this.head;
+        Node<T> temp = this.front;
         int index = 0;
         while (temp != null) {
             if (temp.getData().equals(data)) {
@@ -122,7 +163,7 @@ public class DoubleLinkList<T>{
      * @return true if the list contains 1 or more elements, false otherwise
      */
     public boolean isEmpty() {
-        return this.head == null;
+        return this.front == null;
     }
 
     /**
@@ -131,16 +172,7 @@ public class DoubleLinkList<T>{
      * @param : element points to the head
      * @see : sizeHelper , size
      */
-    public int size() {
-        Node<T> temp = this.head;
-        int count = 0;
-
-        while (temp != null) {
-            temp = temp.next;
-            count += 1;
-        }
-        return count;
-    }
+    public int size() { return this.count; }
 
     /**
      * Return and remove from the list the first element of the list
@@ -148,8 +180,8 @@ public class DoubleLinkList<T>{
      * @return
      */
     public Node<T> getFirstElement() {
-        Node<T> oldHead = this.head;
-        this.head = this.head.next;
+        Node<T> oldHead = this.front;
+        this.front = this.front.next;
         return oldHead;
     }
 
@@ -159,7 +191,7 @@ public class DoubleLinkList<T>{
      * @return the value of the first element in the list
      */
     public T peekFirst() {
-        return this.head != null ? this.head.getData() : null;
+        return this.front != null ? this.front.getData() : null;
     }
 
     /**
@@ -167,19 +199,36 @@ public class DoubleLinkList<T>{
      *
      * @return
      */
-    public T peekLast() {
-        Node<T> temp = this.head;
-        if (temp == null) {
-            return null;
+    public T peekLast() { return this.back.getData(); }
+
+    /**
+     * Get the last element of the list, and the last element will know be the
+     * @return
+     */
+    public Node<T> getLast() {
+        Node<T> last = this.front;
+        Node<T> beforeLast = null;
+        if(isEmpty()){ return beforeLast; }
+
+        while (last.next != null) {
+            beforeLast = last;
+            last = last.next;
         }
-        while (temp.next != null) {
-            temp = temp.next;
+
+        /*There is only on element the head,remove the link of head*/
+        if(beforeLast == null){
+            this.front = null;
+            this.back = null;
+        }else{
+            beforeLast.next = null;
         }
-        return temp.getData();
+
+        this.count--;
+        return last;
     }
 
     /**
-     * This toString requires the Generic Type <T> to have a toString method.
+     * This toString requires the Generic Type T to have a toString method.
      */
     public String toString() {
         if (isEmpty()) {
@@ -187,7 +236,7 @@ public class DoubleLinkList<T>{
         } else {
             StringBuilder str = new StringBuilder();
 
-            Node temp = this.head;
+            Node temp = this.front;
             while (temp != null) {
                 str.append(" [ " + temp.getData().toString() + " ] " + (temp.next == null ? "" : "->"));
                 temp = temp.next;
@@ -203,7 +252,7 @@ public class DoubleLinkList<T>{
      */
     public DoubleLinkList<T> clone() {
         DoubleLinkList<T> cloneList = new DoubleLinkList<T>();
-        Node<T> temp = this.head;
+        Node<T> temp = this.front;
 
         while (temp != null) {
             cloneList.add(temp.getData());

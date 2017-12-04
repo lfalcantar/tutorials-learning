@@ -29,7 +29,7 @@ and two.pointer.linklist
 
 -public T peekFirst()- BigO(1)
 
--public T getLast()- BigO(N)
+-public T peekLast()- BigO(N)
 
 -public int size()- BigO(1)
 
@@ -43,7 +43,7 @@ and two.pointer.linklist
 Test 1 : Adding 100000 to lists
 	OLD-SIZE :0, NEW_SIZE:100000
 	Result for adding 100000, in Seconds: 11.023
-	Used memory in bytes: 4485704  | 4486040
+	Used memory in bytes: 4485704
 	Used memory in megabytes: 4
 Test 2 : the removal of  100000 from lists
 	OLD-SIZE :100000, NEW_SIZE:60616

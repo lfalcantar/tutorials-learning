@@ -13,7 +13,7 @@ public class TestLinkListSingle {
 
     public static void main(String[]args){
         runtime = Runtime.getRuntime();
-        LinkList<Integer> list = new LinkList<Integer>();
+        DoubleLinkList<Integer> list = new DoubleLinkList<Integer>();
 
         System.out.println(list.getClass() + " Test");
 
@@ -66,13 +66,13 @@ public class TestLinkListSingle {
 
 
     }
-    public static void addingToListTest(LinkList<Integer> list){
+    public static void addingToListTest(DoubleLinkList<Integer> list){
         for (int i = 0; i < CONTROL_VARIABLE;i++){
             list.add(i);
         }
     }
 
-    public static void deletingElementsTest( LinkList<Integer> list){
+    public static void deletingElementsTest( DoubleLinkList<Integer> list){
         final int MAX = CONTROL_VARIABLE;
         final int MIN = 0;
 
@@ -85,7 +85,7 @@ public class TestLinkListSingle {
         }
     }
 
-    public static void  getAllElements( LinkList<Integer> list){
+    public static void  getAllElements( DoubleLinkList<Integer> list){
         int limit = list.size();
         for (int i = 0; i < limit;i++){
             list.getLast();
