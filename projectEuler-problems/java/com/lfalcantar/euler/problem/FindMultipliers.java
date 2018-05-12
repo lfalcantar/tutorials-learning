@@ -9,10 +9,9 @@ public class FindMultipliers{
     * This method will be bigO(n) to find the multiples
      * of two numbers from  to the limit;
     */
-    public static int findMultiplesOf(long limit){
-        return IntStream.range(1, 1000)
+    public static int findMultiplesOf(int limit){
+        return IntStream.range(1,limit)
                 .filter(i -> i % 3 == 0 || i % 5 == 0)
-                .map(i -> i % 3 == 0 && i % 5 == 0 ? 2 * i : i)
                 .sum();
     }
 
@@ -26,19 +25,21 @@ public class FindMultipliers{
     public static int findMultiplesOf(int[] multipliers, int limit){
         int interception = 1;
         int sum = 0;
+        int totalElements = 0;
 
         for(int x : multipliers){
-            int upperBound = limit/x;
-            sum += ((x * upperBound)*( 1 + upperBound)) / 2;
+            totalElements = limit/x;
+            sum += (totalElements * ( x + totalElements * x)) / 2;
             interception *=x;
         }
 
-        sum-=((interception * (interception/limit))*( 1 + (interception/limit))) / 2;
+        totalElements= limit/interception;
+        sum-= (totalElements * ( interception + totalElements * interception)) / 2;
         return sum;
     }
 
     public static void main(String [] args){
-        int limit = 999;
+        int limit = 1000;
         long startTime = System.nanoTime();
         System.out.println("FindSum =" + findMultiplesOf(limit));
         long endTime = System.nanoTime();
@@ -47,7 +48,7 @@ public class FindMultipliers{
 
         int[] multipliers = {3,5};
         startTime = System.nanoTime();
-        System.out.println("FindSum =" + findMultiplesOf(multipliers, limit));
+        System.out.println("FindSum =" + findMultiplesOf(multipliers, limit-1));
         endTime = System.nanoTime();
         System.out.println("Execution time:" + (endTime - startTime));
 
