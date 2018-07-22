@@ -1,12 +1,9 @@
-*.class
-.idea/*
-.idea/
-.classpath
-.gitignore
-*.iml
-dataStructures/dataStructures.iml
-tutorials-learning.iml
-java-projects/java-projects.iml
-java-projects/algorithms/algorithms.iml
-java-projects/algorithms/findVerbsInFile/findVerbsInFile.iml
+**/*.class
+**/.idea/*
+**/.idea/
+**/.classpath
+**/*.iml
+**/*.iml
+**/node_modules
+
 
