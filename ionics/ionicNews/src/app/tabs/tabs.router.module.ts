@@ -1,3 +1,4 @@
+import { FavoritesPage } from './../favorites/favorites.page';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -5,6 +6,10 @@ import { TabsPage } from './tabs.page';
 import { HomePage } from '../home/home.page';
 import { AboutPage } from '../about/about.page';
 import { ContactPage } from '../contact/contact.page';
+import { TopNewsPage } from '../top-news/top-news.page';
+import { HeadlinesPage } from '../headlines/headlines.page';
+import { SettingsPage } from '../settings/settings.page';
+import { SourcesPage } from '../sources/sources.page';
 
 const routes: Routes = [
   {
@@ -13,29 +18,39 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/tabs/(home:home)',
+        redirectTo: '/tabs/(top-news:top-news)',
         pathMatch: 'full',
       },
       {
-        path: 'home',
-        outlet: 'home',
-        component: HomePage
+        path: 'top-news',
+        outlet: 'top-news',
+        component: TopNewsPage
       },
       {
-        path: 'about',
-        outlet: 'about',
-        component: AboutPage
+        path: 'favorites',
+        outlet: 'favorites',
+        component: FavoritesPage
       },
       {
-        path: 'contact',
-        outlet: 'contact',
-        component: ContactPage
+        path: 'headlines',
+        outlet: 'headlines',
+        component: HeadlinesPage
+      },
+      {
+        path: 'settings',
+        outlet: 'settings',
+        component: SettingsPage
+      },
+      {
+        path: 'sources',
+        outlet: 'sources',
+        component: SourcesPage
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/(home:home)',
+    redirectTo: '/tabs/(top-news:top-news)',
     pathMatch: 'full'
   }
 ];

@@ -1,3 +1,8 @@
+import { SourcesPageModule } from './../sources/sources.module';
+import { SettingsPageModule } from './../settings/settings.module';
+import { FavoritesPageModule } from './../favorites/favorites.module';
+import { TopNewsPageModule } from './../top-news/top-news.module';
+import { HeadlinesPageModule } from '../headlines/headlines.module';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -7,9 +12,6 @@ import { FormsModule } from '@angular/forms';
 import { TabsPageRoutingModule } from './tabs.router.module';
 
 import { TabsPage } from './tabs.page';
-import { ContactPageModule } from '../contact/contact.module';
-import { AboutPageModule } from '../about/about.module';
-import { HomePageModule } from '../home/home.module';
 
 @NgModule({
   imports: [
@@ -17,9 +19,12 @@ import { HomePageModule } from '../home/home.module';
     CommonModule,
     FormsModule,
     TabsPageRoutingModule,
-    HomePageModule,
-    AboutPageModule,
-    ContactPageModule
+    TopNewsPageModule,
+    HeadlinesPageModule,
+    FavoritesPageModule,
+    SettingsPageModule,
+    SourcesPageModule,
+
   ],
   declarations: [TabsPage]
 })
