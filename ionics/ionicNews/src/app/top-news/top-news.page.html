@@ -5,17 +5,5 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Top News</h2>
-  <ion-grid>
-      <ion-row >
-        <ion-col size="12" size-lg=3 size-md=4 size-sm=6 size-xs=12 *ngFor="let article of (news | async)?.articles">
-          <ion-card>
-            <ion-img *ngIf="article.urlToImage" [src]="article.urlToImage"></ion-img>
-            <ion-card-content>
-              <ion-card-title>{{article.title}}</ion-card-title>
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+  <app-articles [news]="news"></app-articles>
 </ion-content>
